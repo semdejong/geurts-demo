@@ -14,10 +14,10 @@ export const metadata: Metadata = {
 
 const notes: Record<string, string> = {
   "Installaties & kasten": "Filterkasten, een filterinstallatie, een afzuigingsunit en kantelbare mengsilo's.",
-  "Constructie & montage": "Tribunes voor het openluchttheater en de spanten van een rijhal in aanbouw.",
+  "Constructie & montage": "Tribunes voor het openluchttheater in Eibergen en de rijhal van Leusink.",
   Inrichting: "Een paardenstal en de inrichting van een vrachtwagen en een bedrijfsbus.",
-  "Trappen, balustrades & hekwerk": "Een stalen leuning langs een brug over het water.",
-  "RVS-maatwerk": "Een rollenhouder, een beslagmolen en een spoeltafel met wandschappen voor de horeca.",
+  "Trappen, balustrades & hekwerk": "Een brugleuning in Eerbeek.",
+  "RVS-maatwerk": "Een rollenhouder, een beslagmolen en RVS voor de horeca.",
 };
 
 export default function ZakelijkPage() {

@@ -90,7 +90,7 @@ export default function MateriaalPage() {
             ]}
           />
           <p className="mt-5 max-w-[68ch]">
-            Aluminium lassen wij ook, met de apparatuur die daarbij hoort. Dat is werkplaats, geen balieverkoop.{" "}
+            Laswerk nodig in aluminium, RVS of staal?{" "}
             <Link href="/lassen" className="underline decoration-2 underline-offset-4">
               Meer over lassen
             </Link>

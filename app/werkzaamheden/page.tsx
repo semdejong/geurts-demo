@@ -92,11 +92,11 @@ export default function WerkzaamhedenPage() {
         <Container className="py-12">
           <h2>Van de zaag tot buiten de deur</h2>
           <p className="mt-4 max-w-[68ch]">
-            Niet elk werk is een las of een as. In dezelfde hal wordt er ook gezaagd, gesneden, gekant en geknipt.
+            Niet elk werk is een las of een as. In dezelfde werkplaats wordt er ook gezaagd, gesneden, gekant en geknipt.
           </p>
           <Ticket
             rows={[
-              { term: "Boren", children: "Boren, in dezelfde hal als het draaien en frezen." },
+              { term: "Boren", children: "Boren, naast het draaien en frezen." },
               { term: "Zagen", children: "Op lengte zagen. Ook voor materiaal dat u direct meeneemt." },
               { term: "Snijden", children: "Snijden van plaat en profiel." },
               { term: "Kanten", children: "Kanten van plaat." },

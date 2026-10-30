@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 };
 
 const methods = [
-  { name: "TIG", text: "TIG-lassen in roestvast staal, staal en aluminium." },
-  { name: "MIG/MAG", text: "MIG/MAG-lassen in roestvast staal, staal en aluminium." },
-  { name: "Elektrode", text: "Elektrode-lassen in roestvast staal, staal en aluminium." },
+  { name: "TIG", text: "TIG-lassen (wolfraam-inertgaslassen)." },
+  { name: "MIG/MAG", text: "MIG/MAG-lassen." },
+  { name: "Elektrode", text: "Elektrode-lassen." },
 ];
 
 export default function LassenPage() {
@@ -92,7 +92,7 @@ export default function LassenPage() {
                     <Link href="/materiaal" className="underline decoration-2 underline-offset-4">
                       Materiaal halen
                     </Link>{" "}
-                    kan in dezelfde hal.
+                    kan ook op Soetersveldweg 6C.
                   </>
                 ),
               },

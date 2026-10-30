@@ -286,7 +286,7 @@ export function HomePage() {
             </p>
             <h2 className="mt-3">Roestvast staal</h2>
             <p className="mt-3 max-w-[68ch]">
-              RVS heeft een lange levensduur en is geschikt waar hygiëne belangrijk is. Wij lassen RVS met TIG, MIG/MAG en elektrode.
+              RVS heeft een lange levensduur en is geschikt waar hygiëne belangrijk is.
             </p>
           </Container>
         </article>
@@ -297,7 +297,7 @@ export function HomePage() {
             </p>
             <h2 className="mt-3">Staal</h2>
             <p className="mt-3 max-w-[68ch]">
-              Staal is het universele constructiemateriaal. Wij lassen staal met TIG, MIG/MAG en elektrode.
+              Staal is het universele constructiemateriaal.
             </p>
           </Container>
         </article>
@@ -308,7 +308,7 @@ export function HomePage() {
             </p>
             <h2 className="mt-3">Aluminium</h2>
             <p className="mt-3 max-w-[68ch]">
-              Aluminium is lichtgewicht en heeft een relatief hoge sterkte. Aluminium lassen vraagt vakmanschap en speciale lasapparatuur. Wij lassen aluminium met TIG, MIG/MAG en elektrode.
+              Aluminium is lichtgewicht en heeft een relatief hoge sterkte. Aluminium lassen vraagt vakmanschap en speciale lasapparatuur.
             </p>
           </Container>
         </article>

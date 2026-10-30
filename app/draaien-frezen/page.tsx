@@ -55,7 +55,7 @@ export default function DraaienPage() {
       </section>
       <section data-section="ernaast">
         <Container className="py-12">
-          <h2>In dezelfde hal</h2>
+          <h2>In dezelfde werkplaats</h2>
           <Ticket
             rows={[
               {
