@@ -36,17 +36,20 @@ export function Gallery({ photos }: { photos: PhotoType[] }) {
   return (
     <div data-section="galerij">
       <div className="flex w-full min-w-0 max-w-full snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain pb-3 md:grid md:grid-cols-2 md:overflow-visible">
-        {photos.map((photo, photoIndex) => (
+        {photos.map((photo, photoIndex) => {
+          const lastOdd = photoIndex === photos.length - 1 && photos.length % 2 === 1;
+          return (
           <button
             key={photo.src}
             type="button"
             onClick={(event) => openAt(photoIndex, event.currentTarget)}
-            className="w-[82%] shrink-0 snap-start border-[3px] border-navy bg-mist text-left md:w-auto"
+            className={`w-[82%] shrink-0 snap-start border-[3px] border-navy bg-mist text-left md:w-auto ${lastOdd ? "md:col-span-2 md:justify-self-center" : ""}`}
             style={{ maxWidth: photo.w }}
           >
             <Photo src={photo.src} alt={photo.alt} w={photo.w} h={photo.h} sizes="(max-width: 768px) 82vw, 50vw" />
           </button>
-        ))}
+          );
+        })}
       </div>
 
       <dialog

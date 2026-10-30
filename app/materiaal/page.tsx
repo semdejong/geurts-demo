@@ -47,7 +47,7 @@ export default function MateriaalPage() {
           <h2>Drie metalen</h2>
           <ul className="mt-6 border-t-[3px] border-navy">
             {metals.map((metal) => (
-              <li key={metal.label} className="grid gap-2 border-b-2 border-navy py-5 sm:grid-cols-[12rem_minmax(0,1fr)] sm:items-baseline">
+                <li key={metal.label} className="grid gap-2 border-b-2 border-navy py-5 sm:grid-cols-[18rem_minmax(0,1fr)] sm:items-center">
                 <span className="flex items-center gap-3 font-display text-4xl leading-none text-navy">
                   <MaterialMark material={metal.mark} />
                   {metal.label}

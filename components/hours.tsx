@@ -12,11 +12,13 @@ export function HoursTable({ showStatus = true }: { showStatus?: boolean }) {
       <dl className="hours">
         {hoursRows.map((row) => (
           <div key={row.label} className={row.highlight ? "bg-mist px-3" : undefined}>
-            <dt>
-              {row.label}
-              {row.highlight ? <span className="mt-1 block normal-case tracking-normal">Zaterdagochtend</span> : null}
-            </dt>
-            <dd>{row.value}</dd>
+            <dt>{row.label}</dt>
+            <dd>
+              {row.value}
+              {row.highlight ? (
+                <span className="mt-0.5 block font-sans text-base normal-case tracking-normal">Zaterdagochtend</span>
+              ) : null}
+            </dd>
           </div>
         ))}
       </dl>

@@ -9,7 +9,7 @@ const typeMark: Record<string, ProfileId> = {
   "RVS-maatwerk": "koker",
   "Installaties & kasten": "u",
   "Constructie & montage": "buis",
-  Inrichting: "as",
+  Inrichting: "strip",
 };
 
 export function ProjectRows({ projects }: { projects: Project[] }) {
@@ -28,8 +28,11 @@ export function ProjectRows({ projects }: { projects: Project[] }) {
               href={`/projecten/${project.slug}`}
               className="relative grid gap-1 py-4 md:min-h-[5.5rem] md:grid-cols-[2.5rem_minmax(0,1fr)_14rem_6.5rem] md:items-center md:gap-4 md:py-0 md:pr-40"
             >
-              <span className="flex h-8 w-8 items-center overflow-hidden text-navy" aria-hidden>
-                <Profile id={typeMark[project.type] ?? "koker"} className="h-8 w-auto" />
+              <span className="flex h-8 w-10 items-center overflow-hidden text-navy" aria-hidden>
+                <Profile
+                  id={typeMark[project.type] ?? "koker"}
+                  className={typeMark[project.type] === "strip" ? "h-auto w-10" : "h-8 w-auto"}
+                />
               </span>
               <span className="min-w-0 font-display text-[1.65rem] leading-none text-navy">{project.title}</span>
               <span>{project.type}</span>

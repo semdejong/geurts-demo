@@ -48,9 +48,9 @@ export default function DraaienPage() {
         </Container>
       </section>
       <section data-section="werkplaats" className="border-t-[3px] border-navy bg-mist">
-        <Container className="grid items-start gap-4 py-12 sm:grid-cols-[minmax(0,1.4fr)_minmax(0,0.7fr)]">
-          <Shot photo={draai} label="Draaibank" />
-          <Shot photo={frees} label="Freesbank" />
+        <Container className="grid items-start gap-4 py-12 sm:grid-cols-2">
+          <Shot photo={draai} label="Draaibank" frame />
+          <Shot photo={frees} label="Freesbank" frame />
         </Container>
       </section>
       <section data-section="ernaast">

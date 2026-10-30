@@ -18,13 +18,13 @@ import {
 } from "@/components/profiles";
 import { beeld, getProject, projects, references } from "@/lib/projects";
 
-const profileIndex: { id: ProfileId; code: string }[] = [
-  { id: "koker", code: "KOKER 40×40×3" },
-  { id: "buis", code: "BUIS Ø48,3×2,6" },
-  { id: "strip", code: "STRIP 50×5" },
-  { id: "hoek", code: "HOEK 40×40×4" },
-  { id: "u", code: "U 80×45" },
-  { id: "plaat", code: "PLAAT 100×6" },
+const profileIndex: { id: ProfileId; name: string; size: string }[] = [
+  { id: "koker", name: "Koker", size: "40×40×3" },
+  { id: "buis", name: "Buis", size: "Ø48,3×2,6" },
+  { id: "strip", name: "Strip", size: "50×5" },
+  { id: "hoek", name: "Hoek", size: "40×40×4" },
+  { id: "u", name: "U", size: "80×45" },
+  { id: "plaat", name: "Plaat", size: "100×6" },
 ];
 
 const particulierVoorbeelden = [
@@ -101,7 +101,7 @@ export function HomePage() {
         >
           MG
         </p>
-        <Container className="relative z-10 grid items-start gap-8 py-8 md:py-14 lg:grid-cols-2">
+        <Container className="relative z-10 grid items-start gap-8 py-8 md:pt-12 md:pb-8 lg:grid-cols-2">
           <div>
             <CatalogueLabel id="koker" code="KOKER 40×40×3 · RVS" />
             <h1 className="mt-4 max-w-[16em]">
@@ -148,48 +148,53 @@ export function HomePage() {
       </section>
 
       <section data-section="profielindex" className="border-b-[3px] border-navy bg-mist" aria-label="Profielen">
-        <Container className="py-2">
+        <Container className="pt-3 pb-14">
           <ul className="grid grid-cols-1 md:grid-cols-6">
-            {profileIndex.map((item, index) => (
-              <li
-                key={item.code}
-                className="bar-in flex items-center gap-3 border-b-2 border-navy py-3 md:border-b-0 md:border-l-2 md:px-3 md:first:border-l-0"
-                style={{ animationDelay: `${index * 70}ms` }}
-              >
-                <Profile
-                  id={item.id}
-                  className={item.id === "plaat" || item.id === "strip" ? "h-auto w-14 shrink-0 text-navy" : "h-8 w-auto shrink-0 text-navy"}
-                />
-                <span className="font-mono text-[0.68rem] uppercase tracking-[0.12em] text-navy">{item.code}</span>
-              </li>
-            ))}
+            {profileIndex.map((item, index) => {
+              const wide = item.id === "plaat" || item.id === "strip";
+              return (
+                <li
+                  key={item.name}
+                  className="bar-in flex items-center gap-3 border-b-2 border-navy py-3 md:min-w-0 md:border-b-0 md:border-l-2 md:px-2 md:first:border-l-0"
+                  style={{ animationDelay: `${index * 70}ms` }}
+                >
+                  <Profile
+                    id={item.id}
+                    className={wide ? "h-auto w-12 shrink-0 text-navy" : "h-7 w-auto shrink-0 text-navy"}
+                  />
+                  <span className="whitespace-nowrap font-mono text-[0.62rem] uppercase tracking-[0.06em] text-navy">
+                    {item.name} {item.size}
+                  </span>
+                </li>
+              );
+            })}
           </ul>
         </Container>
       </section>
 
       <section data-section="paden" className="grid border-b-[3px] border-navy lg:grid-cols-2">
-        <article className="border-b-[3px] border-navy px-5 py-10 lg:border-r-[3px] lg:border-b-0">
-          <div className="mx-auto max-w-[520px]">
+        <article className="flex flex-col border-b-[3px] border-navy px-5 py-10 lg:border-r-[3px] lg:border-b-0">
+          <div className="mx-auto flex w-full max-w-[520px] flex-1 flex-col">
             <CatalogueLabel id="hoek" code="HOEK 40×40×4 · THUIS" />
             <h2 className="mt-4">Particulier</h2>
             <p className="mt-4 max-w-[68ch]">
               Een balustrade, een hek, een trap, een reparatie of een tuintafel. U kunt ook materiaal komen halen.
             </p>
             <ExampleList slugs={particulierVoorbeelden} />
-            <Link href="/particulier" className="btn btn-navy mt-6">
+            <Link href="/particulier" className="btn btn-navy mt-6 self-start lg:mt-auto">
               Werk voor thuis
             </Link>
           </div>
         </article>
-        <article className="on-navy bg-navy px-5 py-10 lg:col-start-2 lg:row-start-1">
-          <div className="mx-auto max-w-[520px]">
+        <article className="on-navy flex flex-col bg-navy px-5 py-10 lg:col-start-2 lg:row-start-1">
+          <div className="mx-auto flex w-full max-w-[520px] flex-1 flex-col">
             <CatalogueLabel id="u" code="U 80×45 · BEDRIJF" inverse />
             <h2 className="mt-4">Zakelijk</h2>
             <p className="mt-4 max-w-[68ch]">
               Installaties, filterkasten, afzuiging, constructies en bedrijfswageninrichting. Draai- en freeswerk hoort erbij.
             </p>
             <ExampleList slugs={zakelijkVoorbeelden} />
-            <Link href="/zakelijk" className="btn btn-yellow mt-6">
+            <Link href="/zakelijk" className="btn btn-yellow mt-6 self-start lg:mt-auto">
               Werk voor bedrijven
             </Link>
           </div>
@@ -234,9 +239,12 @@ export function HomePage() {
                   Meer over draaien en frezen
                 </Link>
               </div>
-              <div className="grid grid-cols-[minmax(0,1.4fr)_minmax(0,0.7fr)] gap-3">
-                <Photo src={draai.src} alt={draai.alt} w={draai.w} h={draai.h} className="border-[3px] border-navy" />
-                <Photo src={frees.src} alt={frees.alt} w={frees.w} h={frees.h} className="border-[3px] border-navy object-cover" />
+              <div className="grid grid-cols-2 gap-3">
+                {[draai, frees].map((photo) => (
+                  <div key={photo.src} className="relative aspect-[4/3] overflow-hidden border-[3px] border-navy">
+                    <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 1024px) 46vw, 240px" className="photo-grade object-cover" />
+                  </div>
+                ))}
               </div>
             </article>
             <article className="grid gap-6 border-b-[3px] border-navy py-8 lg:grid-cols-2">
@@ -255,9 +263,9 @@ export function HomePage() {
           </div>
           <div className="mt-10" id="en-verder">
             <CatalogueLabel id="strip" code="STRIP 50×5 · EN VERDER" />
-            <ul className="mt-4 border-t-[3px] border-navy">
+            <ul className="mt-4 grid border-t-[3px] border-navy sm:grid-cols-2">
               {verder.map((item) => (
-                <li key={item} className="border-b-2 border-navy py-3">
+                <li key={item} className="border-b-2 border-navy py-3 sm:px-4 sm:odd:pl-0 sm:even:border-l-2">
                   {item}
                 </li>
               ))}

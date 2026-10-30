@@ -161,18 +161,20 @@ export function OfferteFlow() {
       </section>
 
       <section data-section="zekerheid" className="border-b-[3px] border-navy">
-        <Container className="grid gap-px bg-navy py-0 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            ["Sinds 2005", "Van een schuur van 80 m² naar een werkplaats van meer dan 600 m²."],
-            ["VCA", "VCA-gecertificeerd."],
-            ["Metaalunie", "Aangesloten bij de Koninklijke Metaalunie."],
-            ["Eén dak", "Vanaf idee tot realisatie."],
-          ].map(([title, text]) => (
-            <div key={title} className="bg-paper px-5 py-5">
-              <p className="font-mono text-[0.72rem] uppercase tracking-[0.14em] text-navy">{title}</p>
-              <p className="mt-2">{text}</p>
-            </div>
-          ))}
+        <Container className="py-0">
+          <div className="grid gap-px border-2 border-navy bg-navy sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              ["Sinds 2005", "Van een schuur van 80 m² naar een werkplaats van meer dan 600 m²."],
+              ["VCA", "VCA-gecertificeerd."],
+              ["Metaalunie", "Aangesloten bij de Koninklijke Metaalunie."],
+              ["Eén dak", "Vanaf idee tot realisatie."],
+            ].map(([title, text]) => (
+              <div key={title} className="bg-paper px-4 py-5">
+                <p className="font-mono text-[0.72rem] uppercase tracking-[0.14em] text-navy">{title}</p>
+                <p className="mt-2">{text}</p>
+              </div>
+            ))}
+          </div>
         </Container>
       </section>
 

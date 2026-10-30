@@ -1,11 +1,34 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import { Photo } from "@/components/photo";
 import type { Photo as PhotoData } from "@/lib/types";
 
-export function Shot({ photo, label, className = "" }: { photo: PhotoData; label: string; className?: string }) {
+export function Shot({
+  photo,
+  label,
+  className = "",
+  frame = false,
+}: {
+  photo: PhotoData;
+  label: string;
+  className?: string;
+  frame?: boolean;
+}) {
   return (
     <figure className={`min-w-0 ${className}`}>
-      <Photo src={photo.src} alt={photo.alt} w={photo.w} h={photo.h} className="border-[3px] border-navy" />
+      {frame ? (
+        <div className="relative aspect-[4/3] overflow-hidden border-[3px] border-navy">
+          <Image
+            src={photo.src}
+            alt={photo.alt}
+            fill
+            sizes="(max-width: 768px) 92vw, 480px"
+            className="photo-grade object-cover"
+          />
+        </div>
+      ) : (
+        <Photo src={photo.src} alt={photo.alt} w={photo.w} h={photo.h} className="border-[3px] border-navy" />
+      )}
       <figcaption className="mt-2 font-mono text-[0.72rem] uppercase tracking-[0.14em] text-navy">{label}</figcaption>
     </figure>
   );

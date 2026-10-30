@@ -20,7 +20,7 @@ export default function ContactPage() {
         profile="strip"
         code="STRIP 50×5 · EIBERGEN"
         title="Contact en route"
-        lede={`${company.street}, ${company.postalCode} ${company.city}. ${company.area}.`}
+        lede={`${company.street}, ${company.postalCode} ${company.city}, ${company.area}.`}
       >
         <a href={company.phoneTel} data-cta="bellen" className="btn btn-navy">
           Bel {company.phoneDisplay}
@@ -29,8 +29,8 @@ export default function ContactPage() {
           {company.email}
         </a>
       </PageHero>
-      <section data-section="twee-deuren" className="border-b-[3px] border-navy bg-mist">
-        <Container className="grid gap-px bg-navy sm:grid-cols-3">
+      <section data-section="twee-deuren" className="border-b-[3px] border-navy">
+        <Container className="grid sm:grid-cols-3">
           {(
             [
               { href: "/particulier", id: "hoek" as const, code: "THUIS", title: "Particulier", text: "Hek, trap, reparatie of tuintafel." },
@@ -38,7 +38,7 @@ export default function ContactPage() {
               { href: "/materiaal", id: "strip" as const, code: "MAGAZIJN", title: "Materiaal", text: "Zaterdag tot 12:00, direct mee." },
             ] as const
           ).map((item) => (
-            <Link key={item.href} href={item.href} className="block bg-paper p-5">
+            <Link key={item.href} href={item.href} className="block border-b-2 border-navy py-5 sm:border-b-0 sm:border-r-2 sm:px-5 sm:first:pl-0 sm:last:border-r-0 sm:last:pr-0">
               <CatalogueLabel id={item.id} code={item.code} />
               <h2 className="mt-4">{item.title}</h2>
               <p className="mt-2">{item.text}</p>

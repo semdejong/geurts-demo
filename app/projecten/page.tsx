@@ -16,7 +16,7 @@ const marks: Record<(typeof projectTypes)[number], ProfileId> = {
   "RVS-maatwerk": "koker",
   "Installaties & kasten": "u",
   "Constructie & montage": "buis",
-  Inrichting: "as",
+  Inrichting: "strip",
 };
 
 export default function ProjectenPage() {
@@ -32,8 +32,11 @@ export default function ProjectenPage() {
         <Container className="py-8">
           <ul className="border-t-[3px] border-navy">
             {projectTypes.map((type) => (
-              <li key={type} className="grid gap-3 border-b-2 border-navy py-5 md:grid-cols-[3rem_minmax(0,1fr)] md:items-center md:gap-6">
-                <Profile id={marks[type]} className="h-10 w-auto text-navy" />
+              <li key={type} className="grid gap-3 border-b-2 border-navy py-5 md:grid-cols-[3.5rem_minmax(0,1fr)] md:items-start md:gap-6">
+                <Profile
+                  id={marks[type]}
+                  className={marks[type] === "strip" ? "mt-2 h-auto w-12 text-navy" : "h-10 w-auto text-navy"}
+                />
                 <div>
                   <h2 className="text-[1.75rem]">{type}</h2>
                   <p className="mt-2 max-w-[68ch]">{typeNotes[type]}</p>

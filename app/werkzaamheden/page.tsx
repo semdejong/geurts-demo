@@ -80,9 +80,9 @@ export default function WerkzaamhedenPage() {
                   {service.title}
                 </Link>
               </div>
-              <div className={service.extra ? "grid grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)] items-start gap-3" : ""}>
-                <Shot photo={service.photo} label={service.label} />
-                {service.extra ? <Shot photo={service.extra} label="Freesbank" /> : null}
+              <div className={service.extra ? "grid grid-cols-2 items-start gap-3" : ""}>
+                <Shot photo={service.photo} label={service.label} frame={Boolean(service.extra)} />
+                {service.extra ? <Shot photo={service.extra} label="Freesbank" frame /> : null}
               </div>
             </article>
           ))}
@@ -107,8 +107,8 @@ export default function WerkzaamhedenPage() {
           />
         </Container>
       </section>
-      <section data-section="voor-wie">
-        <Container className="grid gap-px border-b-[3px] border-navy bg-navy py-0 sm:grid-cols-3">
+      <section data-section="voor-wie" className="border-b-[3px] border-navy">
+        <Container className="grid py-0 sm:grid-cols-3">
           {(
             [
               { href: "/particulier", code: "THUIS", id: "hoek" as const, title: "Particulier", text: "Hek, trap, reparatie of tuintafel." },
@@ -116,7 +116,7 @@ export default function WerkzaamhedenPage() {
               { href: "/materiaal", code: "MAGAZIJN", id: "strip" as const, title: "Materiaal", text: "Op lengte gezaagd, direct mee." },
             ] as const
           ).map((item) => (
-            <Link key={item.href} href={item.href} className="block bg-paper p-6">
+            <Link key={item.href} href={item.href} className="block border-b-2 border-navy py-6 sm:border-b-0 sm:border-r-2 sm:px-6 sm:first:pl-0 sm:last:border-r-0 sm:last:pr-0">
               <CatalogueLabel id={item.id} code={item.code} />
               <h2 className="mt-4">{item.title}</h2>
               <p className="mt-2">{item.text}</p>

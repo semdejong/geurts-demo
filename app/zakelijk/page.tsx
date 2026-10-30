@@ -61,7 +61,7 @@ export default function ZakelijkPage() {
             <p className="mt-3">TIG, MIG/MAG en elektrode, in RVS, staal en aluminium.</p>
           </Link>
           <Link href="/draaien-frezen" className="border-2 border-navy p-4">
-            <CatalogueLabel id="as" code="AS · DRAAIEN" />
+            <CatalogueLabel id="buis" code="BUIS · DRAAIEN" />
             <p className="mt-3">Draadsnijden, spiebanen, bussen, assen, boren en kotteren.</p>
           </Link>
         </Container>
