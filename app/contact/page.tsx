@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ContactBlock } from "@/components/contact-block";
 import { ContactForm } from "@/components/contact-form";
 import { Container, PageHero } from "@/components/page-hero";
+import { CatalogueLabel } from "@/components/profiles";
 import { content } from "@/content";
 
 export const metadata: Metadata = {
@@ -27,6 +29,23 @@ export default function ContactPage() {
           {company.email}
         </a>
       </PageHero>
+      <section data-section="twee-deuren" className="border-b-[3px] border-navy bg-mist">
+        <Container className="grid gap-px bg-navy sm:grid-cols-3">
+          {(
+            [
+              { href: "/particulier", id: "hoek" as const, code: "THUIS", title: "Particulier", text: "Hek, trap, reparatie of tuintafel." },
+              { href: "/zakelijk", id: "u" as const, code: "BEDRIJF", title: "Zakelijk", text: "Filterkast, constructie of draaiwerk." },
+              { href: "/materiaal", id: "strip" as const, code: "MAGAZIJN", title: "Materiaal", text: "Zaterdag tot 12:00, direct mee." },
+            ] as const
+          ).map((item) => (
+            <Link key={item.href} href={item.href} className="block bg-paper p-5">
+              <CatalogueLabel id={item.id} code={item.code} />
+              <h2 className="mt-4">{item.title}</h2>
+              <p className="mt-2">{item.text}</p>
+            </Link>
+          ))}
+        </Container>
+      </section>
       <section data-section="gegevens">
         <Container className="py-12">
           <ContactBlock />

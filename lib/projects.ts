@@ -15,6 +15,15 @@ export const projectTypes = [
   "Inrichting",
 ] as const;
 
+/** Alleen wat de projecten zelf laten zien. */
+export const typeNotes: Record<(typeof projectTypes)[number], string> = {
+  "Trappen, balustrades & hekwerk": "Hekken, leuningen, trappen en balustrades. Aan een woning en langs een brug.",
+  "RVS-maatwerk": "Maatwerk in roestvast staal: een tuintafel, een rollenhouder, een beslagmolen en werk voor de horeca.",
+  "Installaties & kasten": "Filterkasten, een filterinstallatie, een afzuigingsunit en kantelbare mengsilo's.",
+  "Constructie & montage": "Tribunes tussen de bomen en een stalen spantconstructie van een rijhal.",
+  Inrichting: "Een paardenstal en de inrichting van een vrachtwagen of een bedrijfsbus.",
+};
+
 /** Eén neutrale zin: alleen wat op de foto's te zien is. */
 export const captions: Record<string, string> = {
   "openluchttheater-eibergen": "Nieuwe tribunes tussen de bomen.",
@@ -110,8 +119,14 @@ export function serviceLinks(project: Project): { href: string; label: string }[
   return [{ href: "/lassen", label: "Lassen" }];
 }
 
+export function sameTypeProjects(project: Project): Project[] {
+  return projects.filter((item) => item.slug !== project.slug && item.type === project.type);
+}
+
+export function otherProjects(project: Project, limit = 3): Project[] {
+  return projects.filter((item) => item.slug !== project.slug && item.type !== project.type).slice(0, limit);
+}
+
 export function relatedProjects(project: Project, limit = 3): Project[] {
-  const same = projects.filter((item) => item.slug !== project.slug && item.type === project.type);
-  const rest = projects.filter((item) => item.slug !== project.slug && item.type !== project.type);
-  return [...same, ...rest].slice(0, limit);
+  return [...sameTypeProjects(project), ...otherProjects(project, limit)].slice(0, limit);
 }

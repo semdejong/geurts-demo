@@ -55,6 +55,25 @@ export default function OffertePage() {
           Bel {company.phoneDisplay}
         </a>
       </PageHero>
+      <section data-section="voorbeelden" className="border-b-[3px] border-navy bg-mist">
+        <Container className="py-12">
+          <h2>Zo kan een vraag eruitzien</h2>
+          <ul className="mt-6 border-t-[3px] border-navy">
+            <li className="grid gap-1 border-b-2 border-navy py-4 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-6">
+              <p className="font-mono text-[0.72rem] uppercase tracking-[0.14em] text-navy">Particulier</p>
+              <p className="max-w-[68ch]">Een balkonhek of een reparatie van een leuning. Een foto van de plek is genoeg om te beginnen.</p>
+            </li>
+            <li className="grid gap-1 border-b-2 border-navy py-4 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-6">
+              <p className="font-mono text-[0.72rem] uppercase tracking-[0.14em] text-navy">Zakelijk</p>
+              <p className="max-w-[68ch]">Een filterkast, afzuiging of een onderdeel om te draaien. Zet het bedrijf en een schets of tekening erbij.</p>
+            </li>
+            <li className="grid gap-1 border-b-2 border-navy py-4 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-6">
+              <p className="font-mono text-[0.72rem] uppercase tracking-[0.14em] text-navy">Materiaal</p>
+              <p className="max-w-[68ch]">Kokers of buizen op lengte. Noem materiaal, lengte en aantal. U neemt het mee.</p>
+            </li>
+          </ul>
+        </Container>
+      </section>
       <OfferteFlow />
       <section data-section="faq" className="border-t-[3px] border-navy">
         <Container className="py-14">

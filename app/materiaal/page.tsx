@@ -3,8 +3,8 @@ import Link from "next/link";
 import { ContactBlock } from "@/components/contact-block";
 import { CtaBand } from "@/components/cta-band";
 import { Container, PageHero } from "@/components/page-hero";
-import { Photo } from "@/components/photo";
-import { MaterialMark, ProfileStack } from "@/components/profiles";
+import { CatalogueLabel, MaterialMark, type ProfileId } from "@/components/profiles";
+import { Shot, Ticket } from "@/components/sheet";
 import { beeld } from "@/lib/projects";
 
 export const metadata: Metadata = {
@@ -12,6 +12,19 @@ export const metadata: Metadata = {
   description:
     "Kokers, buizen, strippen en plaat in RVS, staal en aluminium, op lengte gezaagd. Direct mee te nemen in Eibergen. Zaterdag open.",
 };
+
+const stock: { id: ProfileId; code: string; name: string }[] = [
+  { id: "koker", code: "KOKER", name: "Kokers" },
+  { id: "buis", code: "BUIS", name: "Buizen" },
+  { id: "strip", code: "STRIP", name: "Strippen" },
+  { id: "plaat", code: "PLAAT", name: "Plaat" },
+];
+
+const metals = [
+  { mark: "rvs" as const, label: "RVS", text: "Lange levensduur. Geschikt waar hygiëne belangrijk is." },
+  { mark: "staal" as const, label: "Staal", text: "Het universele constructiemateriaal." },
+  { mark: "alu" as const, label: "Aluminium", text: "Lichtgewicht, met een relatief hoge sterkte." },
+];
 
 export default function MateriaalPage() {
   const zaag = beeld("/img/werkplaats/zaag-en-profielen.jpg");
@@ -29,39 +42,69 @@ export default function MateriaalPage() {
           Vraag materiaal aan
         </Link>
       </PageHero>
-      <section data-section="voorraad" className="border-b-[3px] border-navy">
-        <Container className="grid items-start gap-10 py-12 lg:grid-cols-[auto_minmax(0,1fr)]">
-          <ProfileStack />
-          <div>
-            <ul className="border-t-[3px] border-navy">
-              {(
-                [
-                  ["RVS", "rvs", "Lange levensduur. Geschikt waar hygiëne belangrijk is."],
-                  ["Staal", "staal", "Het universele constructiemateriaal."],
-                  ["Aluminium", "alu", "Lichtgewicht, met een relatief hoge sterkte."],
-                ] as const
-              ).map(([label, mark, text]) => (
-                <li key={label} className="grid gap-2 border-b-2 border-navy py-4 sm:grid-cols-[9rem_1fr] sm:items-baseline">
-                  <span className="flex items-center gap-3 font-display text-3xl text-navy">
-                    <MaterialMark material={mark} />
-                    {label}
-                  </span>
-                  <span>{text}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-5 max-w-[68ch]">Wij zagen het op lengte. U neemt het direct mee.</p>
-            <div className="mt-6 flex flex-wrap items-start gap-4">
-              <Photo src={zaag.src} alt={zaag.alt} w={zaag.w} h={zaag.h} className="border-[3px] border-navy" />
-              <Photo src={hal.src} alt={hal.alt} w={hal.w} h={hal.h} className="border-[3px] border-navy" />
-            </div>
+      <section data-section="metalen">
+        <Container className="py-12">
+          <h2>Drie metalen</h2>
+          <ul className="mt-6 border-t-[3px] border-navy">
+            {metals.map((metal) => (
+              <li key={metal.label} className="grid gap-2 border-b-2 border-navy py-5 sm:grid-cols-[12rem_minmax(0,1fr)] sm:items-baseline">
+                <span className="flex items-center gap-3 font-display text-4xl leading-none text-navy">
+                  <MaterialMark material={metal.mark} />
+                  {metal.label}
+                </span>
+                <span>{metal.text}</span>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
+      <section data-section="voorraad" className="border-y-[3px] border-navy bg-mist">
+        <Container className="py-12">
+          <h2>Vier profielen</h2>
+          <p className="mt-4 max-w-[68ch]">Elk van deze vier, in RVS, staal en aluminium. Wij zagen het op lengte.</p>
+          <ul className="mt-6 grid gap-px border-2 border-navy bg-navy sm:grid-cols-2">
+            {stock.map((item) => (
+              <li key={item.id} className="bg-paper p-5">
+                <CatalogueLabel id={item.id} code={item.code} />
+                <h3 className="mt-4">{item.name}</h3>
+                <p className="mt-2">RVS, staal en aluminium. Op lengte gezaagd.</p>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8 grid items-start gap-4 sm:grid-cols-2">
+            <Shot photo={zaag} label="Lintzaag · profielen" />
+            <Shot photo={hal} label="Rekken in de hal" />
           </div>
         </Container>
       </section>
-      <section data-section="openingstijden">
+      <section data-section="meenemen">
+        <Container className="py-12">
+          <h2>Zeg dit aan de balie</h2>
+          <p className="mt-4 max-w-[68ch]">Vier dingen zijn genoeg. U neemt het daarna direct mee.</p>
+          <Ticket
+            rows={[
+              { term: "Materiaal", children: "RVS, staal of aluminium." },
+              { term: "Profiel", children: "Koker, buis, strip of plaat." },
+              { term: "Lengte", children: "Wij zagen het op lengte." },
+              { term: "Aantal", children: "Hoeveel stuks u nodig hebt." },
+            ]}
+          />
+          <p className="mt-5 max-w-[68ch]">
+            Aluminium lassen wij ook, met de apparatuur die daarbij hoort. Dat is werkplaats, geen balieverkoop.{" "}
+            <Link href="/lassen" className="underline decoration-2 underline-offset-4">
+              Meer over lassen
+            </Link>
+            .
+          </p>
+        </Container>
+      </section>
+      <section data-section="openingstijden" className="border-t-[3px] border-navy">
         <Container className="py-12">
           <h2>Openingstijden en route</h2>
-          <p className="mt-4 max-w-[68ch]">Zaterdag zijn wij open van 08:00 tot 12:00. Zondag gesloten.</p>
+          <p className="mt-4 max-w-[68ch]">
+            Zaterdag van 08:00 tot 12:00. Zondag gesloten. Maandag tot en met vrijdag van 08:00 tot 17:30. Industrieterrein De
+            Kiefte.
+          </p>
           <div className="mt-8">
             <ContactBlock />
           </div>

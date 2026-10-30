@@ -14,7 +14,24 @@ export default function NotFound() {
       <Container className="py-16">
         <CatalogueLabel id="strip" code="STRIP 50×5 · 404" />
         <h1 className="mt-4 max-w-[12ch]">Deze pagina bestaat niet.</h1>
-        <p className="mt-5 max-w-[68ch]">De pagina die u zoekt staat niet op deze site.</p>
+        <p className="mt-5 max-w-[68ch]">De pagina die u zoekt staat niet op deze site. Het werk wel: lassen, projecten en materiaal.</p>
+        <ul className="mt-6 max-w-md border-t-[3px] border-navy">
+          <li className="border-b-2 border-navy">
+            <Link href="/lassen" className="flex min-h-11 items-center">
+              Lassen
+            </Link>
+          </li>
+          <li className="border-b-2 border-navy">
+            <Link href="/projecten" className="flex min-h-11 items-center">
+              Projecten
+            </Link>
+          </li>
+          <li className="border-b-2 border-navy">
+            <Link href="/materiaal" className="flex min-h-11 items-center">
+              Materiaal halen
+            </Link>
+          </li>
+        </ul>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <Link href="/" className="btn btn-navy">
             Naar de homepage

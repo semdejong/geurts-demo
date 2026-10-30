@@ -262,6 +262,9 @@ export function HomePage() {
                 </li>
               ))}
             </ul>
+            <Link href="/werkzaamheden" className="btn btn-line mt-6">
+              Alle werkzaamheden
+            </Link>
           </div>
         </Container>
       </section>
