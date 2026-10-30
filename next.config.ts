@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import projecten from "./data/projecten.json";
 
 const nextConfig: NextConfig = {
   cacheComponents: true,
@@ -11,10 +12,17 @@ const nextConfig: NextConfig = {
       },
     },
   },
-  images: {
-    remotePatterns: [{ protocol: "https", hostname: "**" }],
+  async redirects() {
+    return [
+      { source: "/contacts", destination: "/contact", permanent: true },
+      { source: "/draai-en-freeswerk", destination: "/draaien-frezen", permanent: true },
+      ...projecten.map((project) => ({
+        source: project.oldUrl.replace(/\/$/, ""),
+        destination: `/projecten/${project.slug}`,
+        permanent: true,
+      })),
+    ];
   },
-  // Demo's: nooit indexeren, op elke route.
   async headers() {
     return [
       {
